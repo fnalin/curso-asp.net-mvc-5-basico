@@ -1,7 +1,7 @@
 ﻿<h2>Listagem de Produtos</h2>
 
 <div>
-    <a href="~/Produtos/Add">Novo Produto</a>
+    <a href="~/Produtos/AddEdit">Novo Produto</a>
 </div>
 
 <table>
@@ -12,21 +12,66 @@
             <th>Tipo</th>
             <th>Qtde</th>
             <th>Data do Cadastro</th>
+            <th></th>
         </tr>
     </thead>
 
     <tbody>
         @foreach (var produto in Model)
         {
-        <tr>
+        <tr id="produto-@produto.Id">
             <td>@produto.Nome</td>
             <td>@produto.Preco</td>
             <td>@produto.Tipo</td>
             <td>@produto.Qtde</td>
             <td>@produto.DataCadastro</td>
+            <td>
+                <a href="~/Produtos/AddEdit/@produto.Id">Editar</a>
+                <button onclick="DelProd(@produto.Id, '@produto.Nome')">Excluir</button>
+            </td>
         </tr>
         }
 
 
     </tbody>
 </table>
+
+<script>
+
+    function DelProd(id, nome) {
+        let resp = confirm(`Deseja excluir o produto '${nome}'?`)
+        if (resp) {
+            //console.log(`Excluir produto de id ${id}...`)
+            ConfirmDelProd(id)
+        }
+    }
+
+    function ConfirmDelProd(id) {
+        //XMLHTTPREQUEST
+        let xhr = new XMLHttpRequest()
+        const url = `/Produtos/DelProd/${id}`
+
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 404) {
+                alert('Produto não localizado!')
+            }
+
+            if (this.readyState === 4 && this.status === 200) {
+                //remover do html
+                let tr = document.querySelector(`#produto-${id}`)
+                if (tr !== null) {
+                    tr.remove()
+                }
+
+                alert('Produto excluído com sucesso!')
+            }
+                
+        }
+
+        xhr.open('get', url)
+        xhr.send()
+
+    }
+    
+
+</script>

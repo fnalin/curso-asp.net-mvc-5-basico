@@ -9,32 +9,68 @@ using System.Web.Mvc;
 
 namespace FN.Store.UI.Controllers
 {
-    public class ProdutosController:Controller
+    public class ProdutosController : Controller
     {
+        private readonly FNStoreDataContext _ctx = new FNStoreDataContext();
+
+
         public ViewResult Index()
         {
-
-            IList<Produto> produtos = null;
-            using (var ctx = new FNStoreDataContext())
-            {
-                produtos = ctx.Produtos.ToList();
-            }
-
+            var produtos = _ctx.Produtos.ToList();
             return View(produtos);
         }
 
         [HttpGet]
-        public ViewResult Add()
+        public ViewResult AddEdit(int? id)
         {
-            return View();
+            Produto produto = new Produto();
+
+            if (id != null)
+            {
+                produto = _ctx.Produtos.Find(id);
+            }
+
+            return View(produto);
         }
 
+
         [HttpPost]
-        public ViewResult Add(Produto produto)
+        public ActionResult AddEdit(Produto produto)
+        {
+            //TODO: Validar
+            if (produto.Id == 0)
+            {
+                _ctx.Produtos.Add(produto);
+            }
+            else
+            {
+                _ctx.Entry(produto).State = System.Data.Entity.EntityState.Modified;
+            }
+            _ctx.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult DelProd(int id)
         {
 
-            //todo add na tabela
-            return View();
+            var produto = _ctx.Produtos.Find(id);
+            if (produto == null)
+            {
+                return HttpNotFound();
+            }
+
+            _ctx.Produtos.Remove(produto);
+            _ctx.SaveChanges();
+
+            return null;
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            _ctx.Dispose();
         }
 
 
