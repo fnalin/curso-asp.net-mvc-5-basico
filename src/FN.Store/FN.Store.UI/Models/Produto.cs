@@ -1,19 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FN.Store.UI.Models
 {
-    public class Produto
+    [Table(nameof(Produto))]
+    public class Produto: Entity
     {
 
-        public int Id { get; set; }
+        [Required, Column(TypeName ="varchar"), StringLength(100)]
         public string Nome { get; set; }
+
+        [Column(TypeName ="money")]
         public decimal Preco { get; set; }
-        public string Tipo { get; set; }
+
+        [Column("Quantidade")]
         public short Qtde { get; set; }
-        public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        public int TipoDeProdutoId { get; set; }
+
+        [ForeignKey(nameof(TipoDeProdutoId))]
+        public virtual TipoDeProduto TipoDeProduto { get; set; }
+
     }
 }

@@ -1,4 +1,10 @@
-﻿<h2>Adicionar Produto</h2>
+﻿@model FN.Store.UI.Models.Produto 
+
+@{ 
+    ViewBag.Title = $"{(Model.Id == 0 ? "Adicionar" : "Editar")} Produto";
+}
+
+<h2>@ViewBag.Title</h2>
 
 <form method="post">
 
@@ -14,7 +20,14 @@
 
     <div class="form-group"> 
         <label>Tipo:</label>
-        <input class="form-control" type="text" value="@Model.Tipo" name="tipo">
+        <select name="TipoDeProdutoId" class="form-control">
+            <option value="">Selecione ...</option>
+            @foreach (FN.Store.UI.Models.TipoDeProduto item in ViewBag.Tipos)
+            {
+                <option @(item.Id == Model.TipoDeProdutoId ? "selected":"")  
+                        value="@item.Id">@item.Nome</option>
+            }
+        </select>
     </div>
 
     <div class="form-group">

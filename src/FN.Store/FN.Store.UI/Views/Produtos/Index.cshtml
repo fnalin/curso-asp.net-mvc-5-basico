@@ -1,4 +1,7 @@
-﻿<h2>Listagem de Produtos</h2>
+﻿@{ 
+    ViewBag.Title = "Listagem de Produtos";
+}
+<h2>@ViewBag.Title</h2>
 
 <div class="mb-3">
     <a class="btn btn-outline-info" href="~/Produtos/AddEdit">Novo Produto</a>
@@ -17,12 +20,12 @@
     </thead>
 
     <tbody>
-        @foreach (var produto in Model)
+        @foreach (FN.Store.UI.Models.Produto produto in Model)
         {
         <tr id="produto-@produto.Id">
             <td>@produto.Nome</td>
             <td>@produto.Preco</td>
-            <td>@produto.Tipo</td>
+            <td>@produto.TipoDeProduto.Nome</td>
             <td>@produto.Qtde</td>
             <td>@produto.DataCadastro</td>
             <td class="btn-group">
