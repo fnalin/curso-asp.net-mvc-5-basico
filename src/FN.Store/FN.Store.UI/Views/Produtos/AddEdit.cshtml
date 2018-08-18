@@ -2,27 +2,28 @@
 
 <form method="post">
 
-    <div>
+    <div class="form-group">
         <label for="txtNome">Nome:</label>
-        <input type="text" name="nome" id="txtNome" value="@Model.Nome" autofocus>
+        <input class="form-control" type="text" name="nome" id="txtNome" value="@Model.Nome" autofocus>
     </div>
 
-    <div>
+    <div class="form-group">
         <label>Preço:</label>
-        <input type="text" value="@Model.Preco" name="preco">
+        <input class="form-control" type="text" value="@Model.Preco" name="preco">
     </div>
 
-    <div>
+    <div class="form-group"> 
         <label>Tipo:</label>
-        <input type="text" value="@Model.Tipo" name="tipo">
+        <input class="form-control" type="text" value="@Model.Tipo" name="tipo">
     </div>
 
-    <div>
-        <label>Quantidade:</label>
-        <input type="text" value="@Model.Qtde" name="qtde">
+    <div class="form-group">
+        <label >Quantidade:</label>
+        <input class="form-control" type="text" value="@Model.Qtde" name="qtde">
     </div>
 
-    <button>Salvar</button>
-    <a href="~/Produtos">Cancelar</a>
-
+    <div class="form-group">
+        <button class="btn btn-outline-secondary">Salvar</button>
+        <a class="btn btn-outline-info" href="~/Produtos">Cancelar</a>
+    </div>
 </form>

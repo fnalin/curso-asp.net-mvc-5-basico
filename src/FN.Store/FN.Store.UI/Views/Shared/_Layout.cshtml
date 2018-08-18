@@ -2,20 +2,52 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/all.min.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
     <title>FN Store</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Página Inicial</a></li>
-            <li><a href="~/Produtos">Produtos</a></li>
-            <li><a href="~/Home/Sobre">Sobre</a></li>
-        </ul>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">FN Store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Página Inicial</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Produtos">Produtos</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Home/Sobre">Sobre</a>
+                </li>
+
+            </ul>
+            
+        </div>
     </nav>
 
-    <div>
+    <div class="container-fluid">
         @RenderBody()
     </div>
-    
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">&copy;@DateTime.Now.Year FN Corporation</span>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>
