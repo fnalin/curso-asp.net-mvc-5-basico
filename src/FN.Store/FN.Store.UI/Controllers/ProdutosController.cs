@@ -39,18 +39,25 @@ namespace FN.Store.UI.Controllers
         [HttpPost]
         public ActionResult AddEdit(Produto produto)
         {
-            //TODO: Validar
-            if (produto.Id == 0)
+            if (ModelState.IsValid)
             {
-                _ctx.Produtos.Add(produto);
-            }
-            else
-            {
-                _ctx.Entry(produto).State = System.Data.Entity.EntityState.Modified;
-            }
-            _ctx.SaveChanges();
+                if (produto.Id == 0)
+                {
+                    _ctx.Produtos.Add(produto);
+                }
+                else
+                {
+                    _ctx.Entry(produto).State = System.Data.Entity.EntityState.Modified;
+                }
+                _ctx.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+
+            var tipos = _ctx.TipoDeProdutos.ToList();
+            ViewBag.Tipos = tipos;
+
+            return View(produto);
         }
 
 

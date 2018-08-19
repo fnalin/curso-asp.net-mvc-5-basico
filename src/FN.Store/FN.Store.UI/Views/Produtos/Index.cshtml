@@ -4,7 +4,7 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="mb-3">
-    <a class="btn btn-outline-info" href="~/Produtos/AddEdit">Novo Produto</a>
+    <a class="btn btn-outline-info" href="@Url.Action("AddEdit")">Novo Produto</a>
 </div>
 
 <table class="table table-striped table-hover table-responsive-sm p-3">
@@ -29,7 +29,7 @@
             <td>@produto.Qtde</td>
             <td>@produto.DataCadastro</td>
             <td class="btn-group">
-                <a class="btn btn-sm btn-outline-success" href="~/Produtos/AddEdit/@produto.Id"><i class="fas fa-edit"></i> Editar</a>
+                <a class="btn btn-sm btn-outline-success" href="@Url.Action("AddEdit",new { id=produto.Id})"><i class="fas fa-edit"></i> Editar</a>
                 <button class="btn btn-sm btn-outline-danger" onclick="DelProd(@produto.Id, '@produto.Nome')"><i class="fas fa-trash"></i> Excluir</button>
             </td>
         </tr>

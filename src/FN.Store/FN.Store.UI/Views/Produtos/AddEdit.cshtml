@@ -1,6 +1,6 @@
-﻿@model FN.Store.UI.Models.Produto 
+﻿@model FN.Store.UI.Models.Produto
 
-@{ 
+@{
     ViewBag.Title = $"{(Model.Id == 0 ? "Adicionar" : "Editar")} Produto";
 }
 
@@ -10,33 +10,53 @@
 
     <div class="form-group">
         <label for="txtNome">Nome:</label>
-        <input class="form-control" type="text" name="nome" id="txtNome" value="@Model.Nome" autofocus>
+        @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", autofocus = "" })
+        <small>
+            @Html.ValidationMessageFor(m => m.Nome, null, new { @class = "text-danger" })
+        </small>
     </div>
 
     <div class="form-group">
         <label>Preço:</label>
-        <input class="form-control" type="text" value="@Model.Preco" name="preco">
-    </div>
-
-    <div class="form-group"> 
-        <label>Tipo:</label>
-        <select name="TipoDeProdutoId" class="form-control">
-            <option value="">Selecione ...</option>
-            @foreach (FN.Store.UI.Models.TipoDeProduto item in ViewBag.Tipos)
-            {
-                <option @(item.Id == Model.TipoDeProdutoId ? "selected":"")  
-                        value="@item.Id">@item.Nome</option>
-            }
-        </select>
+        @Html.TextBoxFor(m => m.Preco, new { @class = "form-control" })
+        <small>
+            @Html.ValidationMessageFor(m => m.Preco, null, new { @class = "text-danger" })
+        </small>
     </div>
 
     <div class="form-group">
-        <label >Quantidade:</label>
-        <input class="form-control" type="text" value="@Model.Qtde" name="qtde">
+        <label>Tipo:</label>
+        @Html.DropDownListFor(m=>m.TipoDeProdutoId,
+                new SelectList(ViewBag.Tipos, "Id","Nome"),
+                "Selecione ...",
+                new { @class="form-control"}
+            )
+        <small>
+            @Html.ValidationMessageFor(m => m.TipoDeProdutoId, null, new { @class = "text-danger" })
+        </small>
+    </div>
+
+    <div class="form-group">
+        <label>Quantidade:</label>
+        @Html.TextBoxFor(m => m.Qtde, new { @class = "form-control" })
+        <small>
+            @Html.ValidationMessageFor(m => m.Qtde, null, new { @class = "text-danger" })
+        </small>
+    </div>
+
+    <div>
+        @Html.ValidationSummary(true)
     </div>
 
     <div class="form-group">
         <button class="btn btn-outline-secondary">Salvar</button>
-        <a class="btn btn-outline-info" href="~/Produtos">Cancelar</a>
+        <a class="btn btn-outline-info" href="@Url.Action("Index")">Cancelar</a>
     </div>
 </form>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.validate.js"></script>
+}
