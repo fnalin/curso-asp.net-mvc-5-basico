@@ -1,0 +1,49 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <a class="navbar-brand" href="#">FN Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index","Home")">Página Inicial</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index","Produtos")">Produtos</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Sobre","Home")">Sobre</a>
+            </li>
+
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @User.Identity.Name
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Trocar Senha</a>
+                        <a class="dropdown-item" href="#">Meu Perfil</a>
+
+                        <div class="dropdown-divider" href="#"></div>
+
+                        <a class="dropdown-item" href="@Url.Action("LogOut", "Conta")">LogOut</a>
+                    </div>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("Login","Conta")">Efetuar Login</a>
+                </li>
+            }
+        </ul>
+
+
+    </div>
+</nav>

@@ -1,4 +1,5 @@
-﻿using FN.Store.UI.Models;
+﻿using FN.Store.UI.Infra.Helpers;
+using FN.Store.UI.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 
@@ -26,6 +27,16 @@ namespace FN.Store.UI.Data
             };
 
             context.Produtos.AddRange(produtos);
+
+
+            context.Usuarios.Add(new Usuario() {
+                Nome ="Fabiano Nalin",
+                Email = "fabiano.nalin@gmail.com",
+                Senha = "123456".Encrypt()
+            });
+
+
+
             context.SaveChanges();
 
         }

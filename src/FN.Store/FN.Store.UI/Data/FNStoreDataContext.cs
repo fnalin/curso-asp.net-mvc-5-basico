@@ -12,6 +12,7 @@ namespace FN.Store.UI.Data
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<TipoDeProduto> TipoDeProdutos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
     }
 }
