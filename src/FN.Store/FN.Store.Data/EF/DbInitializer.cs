@@ -1,9 +1,9 @@
-﻿using FN.Store.UI.Infra.Helpers;
-using FN.Store.UI.Models;
+﻿using FN.Store.Domain.Entities;
+using FN.Store.Domain.Helpers;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace FN.Store.UI.Data
+namespace FN.Store.Data.EF
 {
     internal class DbInitializer : CreateDatabaseIfNotExists<FNStoreDataContext>
     {
@@ -29,22 +29,12 @@ namespace FN.Store.UI.Data
             context.Produtos.AddRange(produtos);
 
 
-            context.Usuarios.AddRange(
-                new List<Usuario>() {
-
-                    new Usuario() {
-                        Nome ="Fabiano Nalin",
-                        Email = "fabiano.nalin@gmail.com",
-                        Senha = "123456".Encrypt()
-                    },
-
-                    new Usuario() {
-                        Nome ="Priscila Nalin",
-                        Email = "priscila@teste.com",
-                        Senha = "123456@qwerty#".Encrypt()
-                    },
-
-                });
+            context.Usuarios.Add(new Usuario()
+            {
+                Nome = "Fabiano Nalin",
+                Email = "fabiano.nalin@gmail.com",
+                Senha = "123456".Encrypt()
+            });
 
 
 
