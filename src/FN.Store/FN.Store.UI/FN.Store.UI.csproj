@@ -189,8 +189,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutosController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
-    <Compile Include="Data\DbInitializer.cs" />
-    <Compile Include="Data\FNStoreDataContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,6 +237,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FN.Store.Data\FN.Store.Data.csproj">
+      <Project>{84b71cef-295d-459a-8212-81048fa9bfd1}</Project>
+      <Name>FN.Store.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FN.Store.Domain\FN.Store.Domain.csproj">
+      <Project>{d7068755-97fa-488e-90e1-765853221182}</Project>
+      <Name>FN.Store.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

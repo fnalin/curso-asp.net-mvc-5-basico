@@ -1,4 +1,4 @@
-﻿using FN.Store.UI.Data;
+﻿using FN.Store.Data.EF;
 using FN.Store.UI.Infra.Helpers;
 using FN.Store.UI.Models;
 using System.Linq;

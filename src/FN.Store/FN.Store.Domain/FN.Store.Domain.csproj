@@ -34,6 +34,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Repositories\IProdutoRepository.cs" />
+    <Compile Include="Contracts\Repositories\IRepository.cs" />
+    <Compile Include="Contracts\Repositories\ITipoDeProdutoRepository.cs" />
+    <Compile Include="Contracts\Repositories\IUsuarioRepository.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Produto.cs" />
     <Compile Include="Entities\TipoDeProduto.cs" />

@@ -1,5 +1,6 @@
 ﻿using FN.Store.Domain.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 using System.Data.Entity.ModelConfiguration;
 
 namespace FN.Store.Data.EF.Maps
@@ -27,7 +28,12 @@ namespace FN.Store.Data.EF.Maps
             Property(c => c.Email)
                 .HasColumnType("varchar")
                 .HasMaxLength(80)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnAnnotation(
+                    IndexAnnotation.AnnotationName,
+                    new IndexAnnotation(new IndexAttribute("UQ_dbo.Usuario.Email") { IsUnique = true })
+                    )
+                ;
 
             Property(c => c.Senha)
                 .HasColumnType("char")

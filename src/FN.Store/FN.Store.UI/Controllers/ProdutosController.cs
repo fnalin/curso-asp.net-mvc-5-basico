@@ -1,5 +1,5 @@
-﻿using FN.Store.UI.Data;
-using FN.Store.UI.Models;
+﻿using FN.Store.Data.EF;
+using FN.Store.Domain.Entities;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -21,7 +21,7 @@ namespace FN.Store.UI.Controllers
         [HttpGet]
         public ViewResult AddEdit(int? id)
         {
-            Produto produto = new Produto();
+            var produto = new Produto();
 
             if (id != null)
             {
