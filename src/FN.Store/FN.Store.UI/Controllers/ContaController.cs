@@ -1,7 +1,7 @@
-﻿using FN.Store.Data.EF;
+﻿using FN.Store.Data.EF.Repositories;
+using FN.Store.Domain.Contracts.Repositories;
 using FN.Store.UI.Infra.Helpers;
 using FN.Store.UI.Models;
-using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -9,7 +9,7 @@ namespace FN.Store.UI.Controllers
 {
     public class ContaController : Controller
     {
-        private readonly FNStoreDataContext _ctx = new FNStoreDataContext();
+        private readonly IUsuarioRepository _usuarioRepository = new UsuarioRepositoryEF();
 
         [HttpGet]
         public ActionResult Login(string returnURL)
@@ -21,7 +21,7 @@ namespace FN.Store.UI.Controllers
         [HttpPost]
         public ActionResult Login(LoginVM model)
         {
-            var usuario = _ctx.Usuarios.FirstOrDefault(u => u.Email.ToLower() == model.Email.ToLower());
+            var usuario = _usuarioRepository.Get(model.Email);
 
             if (usuario == null)
                 ModelState.AddModelError("Email", "O e-mail não localizado");
@@ -56,7 +56,7 @@ namespace FN.Store.UI.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            _ctx.Dispose();
+            _usuarioRepository.Dispose();
         }
 
     }

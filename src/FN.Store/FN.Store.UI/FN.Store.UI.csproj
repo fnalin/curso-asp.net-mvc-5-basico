@@ -199,6 +199,10 @@
     <Compile Include="Models\TipoDeProduto.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Produtos\AddEdit\Maps\Extensions.cs" />
+    <Compile Include="ViewModels\Produtos\AddEdit\ProdutoAddEditVM.cs" />
+    <Compile Include="ViewModels\Produtos\Index\Maps\Extensions.cs" />
+    <Compile Include="ViewModels\Produtos\Index\ProdutoIndexVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
