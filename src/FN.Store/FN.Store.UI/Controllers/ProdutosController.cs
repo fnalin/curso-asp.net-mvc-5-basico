@@ -1,8 +1,4 @@
-﻿using FN.Store.Data.EF.Repositories;
-using FN.Store.Domain.Contracts.Repositories;
-using FN.Store.Domain.Entities;
-using FN.Store.UI.ViewModels.Produtos.Index;
-using System.Linq;
+﻿using FN.Store.Domain.Contracts.Repositories;
 using System.Web.Mvc;
 using FN.Store.UI.ViewModels.Produtos.Index.Maps;
 using FN.Store.UI.ViewModels.Produtos.AddEdit.Maps;
@@ -14,9 +10,19 @@ namespace FN.Store.UI.Controllers
     [Authorize]
     public class ProdutosController : Controller
     {
-        private readonly IProdutoRepository _produtoRepository = new ProdutoRepositoryEF();
-        private readonly ITipoDeProdutoRepository _tipoDeProdutoRepository =
-                                    new TipoDeProdutoRepositoryEF();
+        private readonly IProdutoRepository _produtoRepository;
+        private readonly ITipoDeProdutoRepository _tipoDeProdutoRepository;
+
+
+        public ProdutosController(
+            IProdutoRepository produtoRepository, 
+            ITipoDeProdutoRepository tipoDeProdutoRepository)
+        {
+            _produtoRepository = produtoRepository;
+            _tipoDeProdutoRepository = tipoDeProdutoRepository;
+        }
+
+
 
         public ViewResult Index()
         {
