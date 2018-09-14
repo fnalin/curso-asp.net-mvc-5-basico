@@ -8,7 +8,11 @@ namespace FN.Store.Data.EF.Repositories
     public class RepositoryEF<T> : IRepository<T> where T: Entity
     {
 
-        protected readonly FNStoreDataContext _ctx = new FNStoreDataContext();
+        protected readonly FNStoreDataContextEF _ctx;
+        public RepositoryEF(FNStoreDataContextEF ctx)
+        {
+            _ctx = ctx;
+        }
 
         public IEnumerable<T> Get()
         {
@@ -46,8 +50,6 @@ namespace FN.Store.Data.EF.Repositories
 
 
         public void Dispose()
-        {
-            _ctx.Dispose();
-        }
+        {}
     }
 }

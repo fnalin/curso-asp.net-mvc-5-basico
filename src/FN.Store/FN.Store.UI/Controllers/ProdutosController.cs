@@ -87,10 +87,7 @@ namespace FN.Store.UI.Controllers
 
 
         protected override void Dispose(bool disposing)
-        {
-            _produtoRepository.Dispose();
-            _tipoDeProdutoRepository.Dispose();
-        }
+        {}
 
     }
 }

@@ -1,3 +1,4 @@
+using FN.Store.Data.EF;
 using FN.Store.Data.EF.Repositories;
 using FN.Store.Domain.Contracts.Repositories;
 using System.Web.Mvc;
@@ -10,12 +11,15 @@ namespace FN.Store.UI
     {
         public static void RegisterComponents()
         {
-			var container = new UnityContainer();
-            
-           container.RegisterType<IProdutoRepository, ProdutoRepositoryEF>();
-           container.RegisterType<ITipoDeProdutoRepository, TipoDeProdutoRepositoryEF>();
-           container.RegisterType<IUsuarioRepository, UsuarioRepositoryEF>();
-            
+            var container = new UnityContainer();
+
+            //github.com/unitycontainer/unity/wiki/Unity-Lifetime-Managers
+            container.RegisterType<FNStoreDataContextEF>();
+
+            container.RegisterType<IProdutoRepository, ProdutoRepositoryEF>();
+            container.RegisterType<ITipoDeProdutoRepository, TipoDeProdutoRepositoryEF>();
+            container.RegisterType<IUsuarioRepository, UsuarioRepositoryEF>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace FN.Store.Data.EF
 {
-    public class FNStoreDataContext : DbContext
+    public class FNStoreDataContextEF : DbContext
     {
-        public FNStoreDataContext() : base("StoreConn")
+        public FNStoreDataContextEF() : base("StoreConn")
         {
             Database.SetInitializer(new DbInitializer());
         }

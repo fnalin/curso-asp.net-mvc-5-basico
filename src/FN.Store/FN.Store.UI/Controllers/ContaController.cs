@@ -1,5 +1,5 @@
 ﻿using FN.Store.Domain.Contracts.Repositories;
-using FN.Store.UI.Infra.Helpers;
+using FN.Store.Domain.Helpers;
 using FN.Store.UI.ViewModels.Conta.Login;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -60,9 +60,7 @@ namespace FN.Store.UI.Controllers
         }
 
         protected override void Dispose(bool disposing)
-        {
-            _usuarioRepository.Dispose();
-        }
+        {}
 
     }
 }

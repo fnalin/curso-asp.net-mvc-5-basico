@@ -3,6 +3,9 @@ using FN.Store.Domain.Entities;
 
 namespace FN.Store.Data.EF.Repositories
 {
-    public class TipoDeProdutoRepositoryEF: RepositoryEF<TipoDeProduto>, ITipoDeProdutoRepository
-    {}
+    public class TipoDeProdutoRepositoryEF : RepositoryEF<TipoDeProduto>, ITipoDeProdutoRepository
+    {
+        public TipoDeProdutoRepositoryEF(FNStoreDataContextEF ctx) : base(ctx)
+        {}
+    }
 }
